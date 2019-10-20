@@ -1,0 +1,11 @@
+# Mac OS
+.DS_Store
+
+# Python
+*/__pycache__
+*.pyc
+
+# Django project files
+redsys
+db.sqlite3
+manage.py
