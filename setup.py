@@ -7,9 +7,10 @@ README = open(os.path.join(here, 'README.md')).read()
 
 setup(
     name='drf-redsys',
-    version='0.1',
-    packages=['drf-redsys'],
-    description='Redsys payments with optional preauthorization and 1-Click',
+    version='0.0.7',
+    packages=['drf_redsys', 'drf_redsys.migrations'],
+    include_package_data=True,
+    description='Redsys payments with optional preauthorizations',
     long_description=README,
     long_description_content_type="text/markdown",
     author='Albert Lopez Alcacer',

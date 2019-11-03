@@ -9,3 +9,8 @@
 redsys
 db.sqlite3
 manage.py
+
+# Package distribution
+build
+dist
+drf_redsys.egg-info

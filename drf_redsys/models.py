@@ -7,7 +7,7 @@ from .RedsysUtils import get_transaction_status_and_details,\
     get_authorization_form, get_confirmation_merchant_data,\
     get_cancellation_merchant_data
 from .tasks import post_merchant_data
-from .signals.signals import order_transaction_changed
+from .signals import order_transaction_changed
 
 
 class SermepaTransaction(models.Model):
@@ -97,13 +97,18 @@ class Order(models.Model):
             self.sermepa_transaction.status
 
     def get_order_amount(self):
-        raise NotImplementedError()
+        raise NotImplementedError('You need to provide the order amount used '
+                                  'in the payment')
 
     def get_ok_url(self):
-        raise NotImplementedError()
+        raise NotImplementedError('You need to provide a OK url used '
+                                  'by RedSys to redirect the user after a '
+                                  'successful payment')
 
     def get_ko_url(self):
-        raise NotImplementedError()
+        raise NotImplementedError('You need to provide a KO url used '
+                                  'by RedSys to redirect the user after a '
+                                  'failed payment')
 
     def is_preauthorized(self):
         return self.sermepa_transaction.status == PREAUTHORIZED
@@ -162,4 +167,5 @@ class Order(models.Model):
         # Return a form to perform the transaction using the bank screen
         return get_authorization_form(
             self.get_order_amount(),
-            self.sermepa_transaction.merchant_order)
+            self.sermepa_transaction.merchant_order, self.get_ko_url(),
+            self.get_ko_url())

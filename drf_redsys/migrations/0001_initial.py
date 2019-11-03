@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                 ('Ds_ExpiryDate', models.CharField(blank=True, max_length=4, null=True)),
                 ('Ds_Merchant_Group', models.CharField(blank=True, max_length=9, null=True)),
                 ('Ds_Card_Number', models.CharField(blank=True, max_length=40, null=True)),
-                ('sermepa_transaction', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sermepa_responses', to='drf-redsys.SermepaTransaction')),
+                ('sermepa_transaction', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sermepa_responses', to='drf_redsys.SermepaTransaction')),
             ],
         ),
         migrations.CreateModel(
@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('uuid', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('sermepa_transaction', models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, to='drf-redsys.SermepaTransaction')),
+                ('sermepa_transaction', models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, to='drf_redsys.SermepaTransaction')),
             ],
         ),
     ]
